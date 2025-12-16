@@ -37,7 +37,7 @@ fun RecipeListScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun recipeListScreenPreview(){
+fun RecipeListScreenPreview(){
     Surface{
         RecipeListScreen(
             recipes = listOf(
