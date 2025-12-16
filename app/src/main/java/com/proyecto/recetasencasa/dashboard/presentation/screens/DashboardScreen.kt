@@ -10,15 +10,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun DashboardScreen() {
+fun DashboardScreen(
+    userName: String,
+    totalRecipes: Int,
+    plannedMeals: Int,
+    onViewRecipesClick: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ){
         Text(
-            text = "Dashboard",
+            text = "Hola, $userName",
             style = MaterialTheme.typography.headlineMedium
         )
+
+        Text(text = "Recetas: $totalRecipes")
+        Text(text = "Planificadas: $plannedMeals")
     }
 }
