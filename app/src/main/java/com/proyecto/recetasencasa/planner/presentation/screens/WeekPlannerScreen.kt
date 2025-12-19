@@ -2,6 +2,7 @@ package com.proyecto.recetasencasa.planner.presentation.screens
 
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -16,6 +17,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.proyecto.recetasencasa.core.presentation.components.BottomNavigationBar
+import com.proyecto.recetasencasa.core.presentation.components.Header
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
 
 @Composable
 fun WeekPlannerScreen(
@@ -23,6 +27,7 @@ fun WeekPlannerScreen(
     onDayClick: (String) -> Unit
 ){
     Scaffold(
+
         bottomBar = {
             BottomNavigationBar(
                 onHomeClick = {},
@@ -32,21 +37,34 @@ fun WeekPlannerScreen(
                 onShoppingClick = {}
             )
         }
-    ) { innerPading ->
-        LazyColumn(
+
+    ) { innerPadding ->
+
+        Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPading),
-            contentPadding = PaddingValues(16.dp)
+                .padding(innerPadding)
+                .padding(16.dp)
         ) {
-            items(plan.entries.toList()){ (day,recipe) ->
-                Text(
-                    text = "$day - $recipe",
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .clickable { onDayClick(day) },
-                    style = MaterialTheme.typography.bodyLarge
-                )
+
+            Header(
+                icon = Icons.Default.DateRange,
+                title = "Recetas de la semana"
+            )
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize(),
+                contentPadding = PaddingValues(16.dp)
+            ) {
+                items(plan.entries.toList()) { (day, recipe) ->
+                    Text(
+                        text = "$day - $recipe",
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .clickable { onDayClick(day) },
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                }
             }
         }
     }

@@ -13,7 +13,6 @@ import androidx.compose.material.icons.automirrored.outlined.MenuBook
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -24,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import com.proyecto.recetasencasa.core.presentation.components.BottomNavigationBar
 import androidx.compose.material.icons.filled.Restaurant
 import androidx.compose.material.icons.filled.ShoppingCart
-import androidx.compose.material.icons.filled.Star
 import com.proyecto.recetasencasa.core.presentation.components.Header
 import com.proyecto.recetasencasa.dashboard.presentation.components.DashboardStatItem
 
@@ -107,12 +105,11 @@ fun DashboardScreen(
 
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(24.dp))
 
-            Button(onClick = onViewRecipesClick) {
+                Button(onClick = onViewRecipesClick) {
                     Text(text = "Ver recetas")
-            }
-
+                }
         }
         }
     }
