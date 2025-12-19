@@ -16,10 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.proyecto.recetasencasa.dashboard.presentation.screens.DashboardScreen
 
 @Composable
-fun DasboardStatItem(
+fun DashboardStatItem(
     icon: ImageVector,
     label: String,
     text: String,
@@ -46,7 +45,7 @@ fun DasboardStatItem(
 @Composable
 fun DashboardStatItemPreview(){
     Surface {
-        DasboardStatItem(
+        DashboardStatItem(
             icon = Icons.AutoMirrored.Outlined.MenuBook,
             label = "Recetas",
             text = "Recetas",
