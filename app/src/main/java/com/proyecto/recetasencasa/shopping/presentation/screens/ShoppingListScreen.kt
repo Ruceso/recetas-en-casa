@@ -2,11 +2,14 @@ package com.proyecto.recetasencasa.shopping.presentation.screens
 
 import android.R
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -16,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.proyecto.recetasencasa.core.presentation.components.BottomNavigationBar
+import com.proyecto.recetasencasa.core.presentation.components.Header
 
 @Composable
 fun ShoppingListScreen(
@@ -33,21 +37,32 @@ fun ShoppingListScreen(
             )
         }
     ) { innerPadding ->
-
-        LazyColumn(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding),
-            contentPadding = PaddingValues(16.dp)
-        ) {
-            items(items) { item ->
-                Text(
-                    text = item,
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .clickable{ onItemClick(item)},
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                .padding(innerPadding)
+                .padding(16.dp)
+        )
+        {
+            Header(
+                icon = Icons.Default.ShoppingCart,
+                title = "Lista de la compra"
+            )
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding),
+                contentPadding = PaddingValues(16.dp)
+            ) {
+                items(items) { item ->
+                    Text(
+                        text = item,
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .clickable { onItemClick(item) },
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                }
             }
         }
     }
