@@ -1,6 +1,7 @@
 package com.proyecto.recetasencasa.recipes.presentation.screens
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,6 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.proyecto.recetasencasa.core.presentation.components.BottomNavigationBar
+import com.proyecto.recetasencasa.core.presentation.components.Header
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.MenuBook
 
 @Composable
 fun RecipeListScreen(
@@ -32,21 +36,33 @@ fun RecipeListScreen(
             )
         }
     ) { innerPadding ->
-
-        LazyColumn(
+        Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding),
-            contentPadding = PaddingValues(16.dp)
-        ) {
-            items(recipes) { recipe ->
-                Text(
-                    text = recipe,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp)
-                        .clickable { onRecipeClick(recipe) }
-                )
+            .fillMaxSize()
+            .padding(innerPadding)
+            .padding(16.dp))
+        {
+
+            Header(
+                icon = Icons.AutoMirrored.Outlined.MenuBook,
+                title = "Libro de recetas"
+            )
+
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding),
+                contentPadding = PaddingValues(16.dp)
+            ) {
+                items(recipes) { recipe ->
+                    Text(
+                        text = recipe,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp)
+                            .clickable { onRecipeClick(recipe) }
+                    )
+                }
             }
         }
     }

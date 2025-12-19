@@ -78,7 +78,8 @@ fun WeekPlannerScreenPreview(){
         WeekPlannerScreen(
             plan = mapOf(
                 "Lunes" to "Pasta",
-                "Martes" to "Ensalada",                "Miercoles" to "Pizza",
+                "Martes" to "Ensalada",
+                "Miercoles" to "Pizza",
                 "Jueves" to "Tortilla",
                 "Viernes" to "Hamburguesa"
             ),
