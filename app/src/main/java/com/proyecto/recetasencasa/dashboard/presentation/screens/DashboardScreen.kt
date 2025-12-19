@@ -7,12 +7,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.proyecto.recetasencasa.core.presentation.components.BottomNavigationBar
 
 @Composable
 fun DashboardScreen(
@@ -21,23 +23,37 @@ fun DashboardScreen(
     plannedMeals: Int,
     onViewRecipesClick: () -> Unit
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-    ){
-        Text(
-            text = "Hola, $userName",
-            style = MaterialTheme.typography.headlineMedium
-        )
+    Scaffold(
+        bottomBar = {
+            BottomNavigationBar(
+                onHomeClick = {},
+                onRecipesClick = {},
+                onCreateClick = {},
+                onPlannerClick = {},
+                onShoppingClick = {}
+            )
+        }
+    ) { innerPadding ->
 
-        Text(text = "Recetas: $totalRecipes")
-        Text(text = "Planificadas: $plannedMeals")
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .padding(16.dp)
+        ) {
+            Text(
+                text = "Hola, $userName",
+                style = MaterialTheme.typography.headlineMedium
+            )
 
-        Spacer(modifier = Modifier.height(24.dp))
+            Text(text = "Recetas: $totalRecipes")
+            Text(text = "Planificadas: $plannedMeals")
 
-        Button(onClick = onViewRecipesClick){
-            Text(text = "Ver recetas")
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Button(onClick = onViewRecipesClick) {
+                Text(text = "Ver recetas")
+            }
         }
     }
 }
