@@ -8,34 +8,50 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.proyecto.recetasencasa.core.presentation.components.BottomNavigationBar
 
 @Composable
 fun ShoppingListScreen(
     items: List<String>,
     onItemClick: (String) -> Unit
 ){
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxSize(),
-        contentPadding = PaddingValues(16.dp)
-    ) {
-        items(items) { item ->
-            Text(
-                text = item,
-                modifier = Modifier
-                    .padding(8.dp)
-                    .clickable{ onItemClick(item)},
-                style = MaterialTheme.typography.bodyLarge
+    Scaffold(
+        bottomBar = {
+            BottomNavigationBar(
+                onHomeClick = {},
+                onRecipesClick = {},
+                onCreateClick = {},
+                onPlannerClick = {},
+                onShoppingClick = {}
             )
         }
+    ) { innerPadding ->
+
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding),
+            contentPadding = PaddingValues(16.dp)
+        ) {
+            items(items) { item ->
+                Text(
+                    text = item,
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .clickable{ onItemClick(item)},
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
+        }
     }
+
 }
 
 @Preview(showBackground = true)

@@ -1,6 +1,5 @@
 package com.proyecto.recetasencasa.recipes.presentation.screens
 
-import android.icu.number.Scale
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize

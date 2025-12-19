@@ -1,8 +1,7 @@
 package com.proyecto.recetasencasa.planner.presentation.screens
 
-import android.view.Surface
+
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -61,8 +60,7 @@ fun WeekPlannerScreenPreview(){
         WeekPlannerScreen(
             plan = mapOf(
                 "Lunes" to "Pasta",
-                "Martes" to "Ensalada",
-                "Miercoles" to "Pizza",
+                "Martes" to "Ensalada",                "Miercoles" to "Pizza",
                 "Jueves" to "Tortilla",
                 "Viernes" to "Hamburguesa"
             ),
