@@ -24,7 +24,7 @@ fun Header(
     modifier: Modifier = Modifier
 ){
     Row(
-        modifier,
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ){
         Icon(
