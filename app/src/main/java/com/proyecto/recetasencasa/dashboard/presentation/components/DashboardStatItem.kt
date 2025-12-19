@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.MenuBook
 import androidx.compose.material3.Icon
@@ -21,7 +22,6 @@ import androidx.compose.ui.unit.dp
 fun DashboardStatItem(
     icon: ImageVector,
     label: String,
-    text: String,
     value: Int,
     modifier: Modifier = Modifier
 ){
@@ -37,7 +37,7 @@ fun DashboardStatItem(
 
         Spacer(modifier = Modifier.height(4.dp))
 
-        Text(text = "$text: $value")
+        Text(text = "$label: $value")
     }
 }
 
@@ -48,9 +48,8 @@ fun DashboardStatItemPreview(){
         DashboardStatItem(
             icon = Icons.AutoMirrored.Outlined.MenuBook,
             label = "Recetas",
-            text = "Recetas",
             value = 12,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.padding(16.dp)
         )
     }
 }
