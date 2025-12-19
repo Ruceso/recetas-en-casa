@@ -9,33 +9,49 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.proyecto.recetasencasa.core.presentation.components.BottomNavigationBar
 
 @Composable
 fun WeekPlannerScreen(
     plan: Map<String, String>,
     onDayClick: (String) -> Unit
 ){
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxSize(),
-        contentPadding = PaddingValues(16.dp)
-    ) {
-        items(plan.entries.toList()){ (day,recipe) ->
-            Text(
-                text = "$day - $recipe",
-                modifier = Modifier
-                    .padding(8.dp)
-                    .clickable { onDayClick(day) },
-                style = MaterialTheme.typography.bodyLarge
+    Scaffold(
+        bottomBar = {
+            BottomNavigationBar(
+                onHomeClick = {},
+                onRecipesClick = {},
+                onCreateClick = {},
+                onPlannerClick = {},
+                onShoppingClick = {}
             )
         }
+    ) { innerPading ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPading),
+            contentPadding = PaddingValues(16.dp)
+        ) {
+            items(plan.entries.toList()){ (day,recipe) ->
+                Text(
+                    text = "$day - $recipe",
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .clickable { onDayClick(day) },
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
+        }
     }
+
 }
 
 @Preview(showBackground = true)
