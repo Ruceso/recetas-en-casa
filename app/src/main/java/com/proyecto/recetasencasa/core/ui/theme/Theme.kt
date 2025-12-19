@@ -1,6 +1,5 @@
-package com.proyecto.recetasencasa.ui.theme
+package com.proyecto.recetasencasa.core.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

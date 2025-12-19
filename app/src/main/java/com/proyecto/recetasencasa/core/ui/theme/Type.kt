@@ -1,4 +1,4 @@
-package com.proyecto.recetasencasa.ui.theme
+package com.proyecto.recetasencasa.core.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
