@@ -1,6 +1,5 @@
 package com.proyecto.recetasencasa.recipes.presentation.screens
 
-import android.R
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
