@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -29,7 +30,8 @@ import androidx.compose.ui.Alignment
 
 @Composable
 fun WeekPlannerScreen(
-    plan: Map<String, String>,
+    day: String,
+    meals: List<String>,
     dayStart: Int,
     dayEnd: Int,
     monthStart: String,
@@ -99,16 +101,16 @@ fun WeekPlannerScreen(
 
             }
             LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize(),
+                modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(8.dp)
             ) {
-                items(plan.entries.toList()) { (day, recipe) ->
+                items (meals) { meal ->
                     Text(
-                        text = "$day - $recipe",
+                        text = meal,
                         modifier = Modifier
-                            .padding(8.dp)
-                            .clickable { onDayClick(day) },
+                            .fillMaxWidth()
+                            .padding(12.dp)
+                            .clickable { onDayClick(meal) },
                         style = MaterialTheme.typography.bodyLarge
                     )
                 }
@@ -123,12 +125,13 @@ fun WeekPlannerScreen(
 fun WeekPlannerScreenPreview(){
     Surface{
         WeekPlannerScreen(
-            plan = mapOf(
-                "Lunes" to "Pasta",
-                "Martes" to "Ensalada",
-                "Miercoles" to "Pizza",
-                "Jueves" to "Tortilla",
-                "Viernes" to "Hamburguesa"
+            day = "Lunes",
+            meals = listOf(
+                "Desayuno",
+                "Almuerzo",
+                "Comida",
+                "Merienda",
+                "Cena"
             ),
             dayStart = 28,
             dayEnd = 3,

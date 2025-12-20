@@ -119,7 +119,7 @@ fun DashboardScreen(
 fun DashboardScreenPreview() {
     Surface{
         DashboardScreen(
-            userName = "Ruben",
+            userName = "Rubén",
             totalRecipes = 12,
             plannedMeals = 8,
             ingredients = 18,
