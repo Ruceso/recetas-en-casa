@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.proyecto.recetasencasa.recipes.presentation.components.BackHeader
 import kotlin.String
 
 @Composable
@@ -27,9 +28,10 @@ fun RecipeDetailScreen(
             .fillMaxSize()
             .padding(16.dp)
     ){
-        Text(
-            text = name,
-            style = MaterialTheme.typography.headlineMedium
+        BackHeader(
+            title = name,
+            onBackClick = {},
+            modifier = Modifier.padding(bottom = 24.dp)
         )
 
         Spacer(modifier = Modifier.height(24.dp))
