@@ -18,7 +18,6 @@ import com.proyecto.recetasencasa.recipes.presentation.components.BackHeader
 
 @Composable
 fun CreateRecipeScreen(
-    title: String = "Nueva receta",
     name: String,
     description: String,
     time: String,
@@ -33,7 +32,7 @@ fun CreateRecipeScreen(
             .padding(16.dp)
     ){
         BackHeader(
-            title = title,
+            title = "Nueva receta",
             onBackClick = {},
             modifier = Modifier.padding(bottom = 24.dp)
         )
