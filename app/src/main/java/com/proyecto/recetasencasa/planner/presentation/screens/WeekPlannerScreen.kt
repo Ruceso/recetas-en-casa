@@ -31,12 +31,13 @@ import androidx.compose.ui.Alignment
 @Composable
 fun WeekPlannerScreen(
     day: String,
-    meals: List<String>,
+    meals: Map<String, String?>,
     dayStart: Int,
     dayEnd: Int,
     monthStart: String,
     monthEnd: String,
-    onDayClick: (String) -> Unit
+    onDayClick: (String) -> Unit,   // No se usa de momento, falta añadir una barra para seleccionar el dia
+    onMealClick: (String) -> Unit
 ){
     Scaffold(
 
@@ -100,19 +101,39 @@ fun WeekPlannerScreen(
                 )
 
             }
+
+            Text(
+                text = day,
+                style = MaterialTheme.typography.titleMedium
+            )
+
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(8.dp)
             ) {
-                items (meals) { meal ->
-                    Text(
-                        text = meal,
+
+                items (meals.entries.toList()) { entry ->
+                    val moment = entry.key
+                    val recipe = entry.value
+
+                    Column(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(12.dp)
-                            .clickable { onDayClick(meal) },
-                        style = MaterialTheme.typography.bodyLarge
-                    )
+                            .clickable { onMealClick(moment) },
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = moment,
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+
+                        Text(
+                            text = recipe ?: "Sin asignar",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                 }
             }
         }
@@ -126,18 +147,19 @@ fun WeekPlannerScreenPreview(){
     Surface{
         WeekPlannerScreen(
             day = "Lunes",
-            meals = listOf(
-                "Desayuno",
-                "Almuerzo",
-                "Comida",
-                "Merienda",
-                "Cena"
+            meals = mapOf(
+                "Desayuno" to "Tostadas",
+                "Almuerzo" to "Plátano",
+                "Comida" to "Pasta",
+                "Merienda" to null,
+                "Cena" to "Ensalada"
             ),
             dayStart = 28,
             dayEnd = 3,
             monthStart = "Oct",
             monthEnd = "Nov",
-            onDayClick = {}
+            onDayClick = {},
+            onMealClick = {}
         )
     }
 }
